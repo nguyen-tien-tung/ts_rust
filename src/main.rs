@@ -3,7 +3,7 @@
 //   print!("{:?}", array);
 // }
 
-use std::collections::HashSet;
+use std::collections::{HashSet, HashMap};
 
 fn main(){
   let data = vec![1,2,3];
@@ -24,5 +24,9 @@ fn main(){
 
   vec![1,2,5,9,4].into_iter().skip(2).take_while(|&x| x > 4).for_each(|x| println!("{}", x));
 
-  let _what_about_this = vec![1,2,3].iter().filter(|x| *x % 2 == 0).count();
+  let what_about_this = vec![1,2,3].iter().filter(|&x| x % 2 == 0).count();
+
+  let hm: HashMap<&str, usize> = vec!["this", "is", "a", "test"].into_iter().enumerate().map(|(index, item)| (item, index)).collect();
+  println!("{:?}", what_about_this);
+  println!("{:?}", hm);
 }
