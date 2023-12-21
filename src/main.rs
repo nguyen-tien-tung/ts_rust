@@ -3,7 +3,7 @@
 //   print!("{:?}", array);
 // }
 
-use std::collections::{HashSet, HashMap};
+// use std::collections::{HashSet, HashMap};
 
 // fn main(){
 //   let data = vec![1,2,3];
@@ -32,5 +32,6 @@ use std::collections::{HashSet, HashMap};
 // }
 
 fn main(){
-  
+  let file = std::fs::read_to_string("projects/lines").unwrap();
+  file.lines().enumerate().for_each(|(index, line)| if index % 2 == 0  {println!("{}", line)} else {});
 }

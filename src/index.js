@@ -6,5 +6,5 @@ var path = require("node:path");
 fs.readFile(path.resolve('projects/lines'), 'utf-8', function (err, data) {
     if (err)
         throw err;
-    console.log(data);
+    data.split('\n').forEach(function (line, i) { return (i % 2 == 0 ? console.log(line) : null); });
 });
