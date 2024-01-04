@@ -1,16 +1,19 @@
-enum Colors {
-    Red,
-    Green,
-    Blue
-}
+use crate::shapes::{rectangle::Rect, circle::Circle, area::Area};
 
-fn print_color(color: Colors) -> () {
-  match color {
-    Colors::Red => println!("red"),
-    Colors::Green => println!("green"),
-    Colors::Blue => println!("blue"),
-};
-}
+mod shapes;
+
 fn main() {
-    print_color(Colors::Green);
+  let rect = Rect {
+    x: 0.0,
+    y: 0.0,
+    width: 0.0,
+    height: 0.0
+  };
+  let circle = Circle{
+    x: 0.0,
+    y: 0.0,
+    radius: 10.0
+  };
+  println!("{}", rect.area());
+  println!("{}", circle.area());
 }
