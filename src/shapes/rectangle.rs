@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 use super::area::Area;
 
 pub struct Rect {
@@ -11,4 +13,38 @@ impl Area for Rect {
   fn area(&self) -> f64 {
     return self.width * self.height;
   }
+}
+
+impl Default for Rect {
+    fn default() -> Self {
+      return Self {
+        x: 0.0,
+        y: 0.0,
+        width: 10.0,
+        height: 12.0,
+      }
+    }
+}
+
+impl Display for Rect{
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        return write!(f, "Rectangle ({}, {}): {}x{}", self.x, self.y, self.width, self.height);
+    }
+}
+
+struct RectIter {
+  points: Vec<(f64, f64)>,
+  idx: usize
+}
+
+impl Iterator for RectIter {
+    type Item = (f64, f64);
+
+    fn next(&mut self) -> Option<Self::Item> {
+      if self.idx >= self.points.len() {
+        return None;
+      }
+
+      let point = self.points.get(self.idx);
+    }
 }
