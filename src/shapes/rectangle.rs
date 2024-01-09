@@ -32,7 +32,7 @@ impl Display for Rect{
     }
 }
 
-struct RectIter {
+pub struct RectIter {
   points: Vec<(f64, f64)>,
   idx: usize
 }
@@ -45,6 +45,19 @@ impl Iterator for RectIter {
         return None;
       }
 
-      let point = self.points.get(self.idx);
+      return self.points.get(self.idx).map(|x| *x);
+    }
+}
+
+impl IntoIterator for Rect {
+    type Item = (f64, f64);
+
+    type IntoIter = RectIter;
+
+    fn into_iter(self) -> Self::IntoIter {
+        return RectIter {
+          points: vec![(self.x, self.y), (self.x + self.width, self.y), (self.x, self.y + self.height), (self.x + self.width, self.y + self.height)],
+          idx: 0
+        }
     }
 }

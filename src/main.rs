@@ -1,6 +1,6 @@
-use crate::shapes::{rectangle::Rect, circle::Circle, area::Area};
-
 mod shapes;
+use shapes::{rectangle::Rect, circle::Circle, area::Area};
+
 
 fn main() {
   let rect = Rect {
